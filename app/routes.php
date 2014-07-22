@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('/', function()
-{
+/*General Routes */
+Route::get('/', array('as' => 'home', function(){
+
 	return View::make('hello');
-});
+}));
+
+Route::resource('user', 'UserController');
+
+/* Session Routes */
+// Route::get('/login', array('as' => 'login', 'uses' => 'SessionController@create'));
+// Route::get('/logout', array('as' => 'logout', 'uses' => 'SessionController@destroy'));
+
+Route::get('/signup', array('as' => 'signup', 'uses' => 'UserController@create'));
+Route::post('signup', 'UserController@store');
+
+/* Event Routes */
+//Route::resource('event', 'EventController');
+
